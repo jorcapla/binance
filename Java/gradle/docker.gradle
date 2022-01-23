@@ -3,7 +3,7 @@ jib {
         image = "eclipse-temurin:11-jre-focal"
     }
     to {
-        image = "cryptoservices:latest"
+        image = "jorcapla/crypto:java-latest"
     }
     container {
         entrypoint = ["bash", "-c", "/entrypoint.sh"]

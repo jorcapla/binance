@@ -1,9 +1,24 @@
-# cryptoservices
+# Cryptoservices - Java
 
-This application was generated using JHipster 7.4.0, you can find documentation and help at [https://www.jhipster.tech/documentation-archive/v7.4.0](https://www.jhipster.tech/documentation-archive/v7.4.0).
+Esta aplicación se generó utilizando JHipster 7.4.0, puede encontrar documentación y ayuda en [https://www.jhipster.tech/documentation-archive/v7.4.0](https://www.jhipster.tech/documentation-archive /v7.4.0).
 
-This is a "microservice" application intended to be part of a microservice architecture, please refer to the [Doing microservices with JHipster][] page of the documentation for more information.
-This application is configured for Service Discovery and Configuration with . On launch, it will refuse to start if it is not able to connect to .
+Esta es una aplicación de "microservicio" destinada a ser parte de una arquitectura de microservicio, consulte la página [Doing microservices with JHipster][] de la documentación para obtener más información.
+
+
+## Arrancar la solución para testear el servicio de obtención de precios
+
+La forma mas rápida para probar la aplicación es arrancar el contenedor docker de la aplicación disponible en dockerhub. En caso contrario habria que configurar el equipo para poder ejecutar programas java empaquetados con gradle
+
+Para arrancar la aplicación usando docker lanzar este comando desde la carpeta ráiz de la solución
+
+```
+docker-compose -f src/main/docker/app.yml up -d
+```
+Una vez arrancado docker solo tendrá que llamar a la url http://localhost:8888/api/cryptocoin/price
+
+
+En las siguientes secciones se explica como arrancar el proyecto en desarrollo, como compilar la aplicación para producción, testing, calidad de código  y despliegue continuo.
+
 
 ## Development
 

@@ -1,8 +1,0 @@
-{
-  "generator-jhipster:7.4.0": {
-    "promptValues": {
-      "packageName": "com.capel.cryptoservice",
-      "nativeLanguage": "es"
-    }
-  }
-}

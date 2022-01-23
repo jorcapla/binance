@@ -1,0 +1,308 @@
+{
+    "openapi": "3.0.3",
+    "info": {
+      "description": "This page shows all the developed endpoint of the NUNSTS-Brain Cognitive Rest API. Here you will find text analisys, keyphrase extraction, text translation and more...",
+      "version": "0.0.1",
+      "title": "NUNSYS-Brain Cognitive API",
+      "contact": {
+        "email": "miguel.garcia@nunsys.com"
+      },
+      "license": {
+        "name": "SomeLicense",
+        "url": "http://SomeLicense.URL"
+      }
+    },
+    "servers":[{
+      "url": "/API"
+    }],
+    "tags":[
+      {
+        "name": "Translate",
+        "description": "Endpoint containing REST API functions related to Translation"
+      },
+      {
+        "name": "Analize",
+        "description":"Endpoint containing REST API functions related to sentence analisys such as keyphreases and sentiments"
+      },
+      {
+        "name": "Generate",
+        "description": "Endpoint dedicated to generate content based on a given context. STILL IN DEVELOP"
+      }
+    ],
+    "paths":{
+      "/Translate/languageCodes":{
+        "get":{
+          "tags": [
+            "Translate"
+          ],
+          "summary": "Returns the suported languages along with its ISO codes",          
+          "responses": {
+            "200": {
+              "description": "OK"
+            }
+          }
+        }
+      },
+      "/Translate/sentences":{
+        "post":{
+          "tags": [
+            "Translate"
+          ],
+          "summary": "Translates the inputed sentences from the source language to the destination one.",
+          "requestBody": {
+            "description": "Request Post Object",
+            "required": true,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TranslateObjectRequest"
+                }
+              }
+            }
+          },
+          "produces": [
+            "application/json"
+          ],
+          "responses": {
+            "200": {
+              "description": "OK",
+              "content": {
+                "application/json":{
+                  "schema": {
+                    "$ref": "#/components/schemas/TranslateObjectResponse"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/Analize/keyPhrase":{
+        "post":{
+          "tags": [
+            "Analize"
+          ],
+          "summary": "Analizes the inputed sentences and returns the most important topics in them.",
+          "requestBody": {
+            "description": "Request Post Object",
+            "required": true,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AnalizeObjectRequest"
+                }
+              }
+            }
+          },
+          "produces": [
+            "application/json"
+          ],
+          "responses": {
+            "200": {
+              "description": "OK",
+              "content": {
+                "application/json":{
+                  "schema": {
+                    "$ref": "#/components/schemas/AnalizeKeyphraseResponse"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/Analize/sentiment":{
+        "post":{
+          "tags": [
+            "Analize"
+          ],
+          "summary": "Analizes the inputed sentences and returns the overall sentiment of the phrases, and the detailed sentiment of the subphrases beneath.",
+          "requestBody": {
+            "description": "Request Post Object",
+            "required": true,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AnalizeObjectRequest"
+                }
+              }
+            }
+          },
+          "produces": [
+            "application/json"
+          ],
+          "responses": {
+            "200": {
+              "description": "OK",
+              "content": {
+                "application/json":{
+                  "schema": {
+                    "$ref": "#/components/schemas/AnalizeSentimentResponse"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "components":{
+      "schemas": {
+        "AnalizeObjectRequest":{
+          "type": "object",
+          "properties": {
+            "multi_language" :{
+              "type": "boolean"
+            },
+            "language": {
+              "type": "string",
+              "format": "string"
+            },
+            "sentences": {
+              "type": "array",
+              "items":{
+                "type": "object",
+                "properties": {
+                  "language": {
+                    "type": "string",
+                    "format": "string"
+                  },
+                  "sentence": {
+                    "type": "string",
+                    "format": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "TranslateObjectRequest":{
+          "type": "object",
+          "properties": {
+            "multi_language" :{
+              "type": "boolean"
+            },
+            "source_lang": {
+              "type": "string",
+              "format": "string"
+            },
+            "dest_lang": {
+              "type": "string",
+              "format": "string"
+            },
+            "sentences": {
+              "type": "array",
+              "items":{
+                "type": "object",
+                "properties": {
+                  "source_lang": {
+                    "type": "string",
+                    "format": "string"
+                  },
+                  "sentence": {
+                    "type": "string",
+                    "format": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "TranslateObjectResponse": {
+          "type": "object",
+          "properties": {
+            "Translations" :{
+              "type": "array",
+              "items":{
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "integer",
+                    "format": "int32"
+                  },
+                  "language": {
+                    "type": "string",
+                    "format": "string"
+                  },
+                  "text":{
+                    "type": "string",
+                    "format": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "AnalizeKeyphraseResponse": {
+          "type": "object",
+          "properties": {
+            "response" :{
+              "type": "object",
+              "properties": {
+                "keyPhrases": {
+                  "type": "array",
+                  "items":{
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "integer",
+                        "format": "int32"
+                      },
+                      "keyPhrases": {
+                        "type": "array",
+                        "items": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "AnalizeSentimentResponse": {
+          "type": "object",
+          "properties": {
+            "response" :{
+              "type": "object",
+              "properties": {
+                "sentiment_analisys": {
+                  "type": "array",
+                  "items":{
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "integer",
+                        "format": "int32"
+                      },
+                      "overall_sentiment": {
+                        "type": "string",
+                        "format": "string"
+                      },
+                      "sentence_detail": {
+                        "type": "array",
+                        "items": {
+                          "type": "object",
+                          "properties":{
+                            "sentiment": {
+                              "type": "string",
+                              "format": "string"
+                            },
+                            "text": {
+                              "type": "string",
+                              "format": "string"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
