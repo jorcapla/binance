@@ -1,0 +1,11 @@
+version: '3'
+
+services:
+  cryptoservices:
+    image: jorcapla/crypto:python-latest
+    ports:
+      - 8888:8888
+    networks:
+      - default
+
+ 
