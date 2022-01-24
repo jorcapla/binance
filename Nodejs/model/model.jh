@@ -1,0 +1,16 @@
+entity CryptoCoin {
+
+  symbol String ,
+  price Float
+
+}
+
+/**
+ * OPTIONS
+ * ========
+ */
+
+dto * with mapstruct
+service * with serviceImpl
+filter *
+paginate * with pagination

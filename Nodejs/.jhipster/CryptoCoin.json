@@ -1,0 +1,27 @@
+{
+  "name": "CryptoCoin",
+  "fields": [
+    {
+      "fieldName": "symbol",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "price",
+      "fieldType": "Float"
+    }
+  ],
+  "relationships": [],
+  "entityTableName": "crypto_coin",
+  "dto": "mapstruct",
+  "pagination": "pagination",
+  "service": "serviceImpl",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": "*",
+  "microserviceName": "cryptoservices",
+  "clientRootFolder": "cryptoservices",
+  "databaseType": "mongodb",
+  "changelogDate": "20220123203950"
+}

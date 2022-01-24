@@ -7,12 +7,12 @@ import { HeaderUtil } from '../../client/header-util';
 import { ApiUseTags, ApiResponse, ApiOperation } from '@nestjs/swagger';
 import { AuthService } from '../../service/auth.service';
 
+
 @Controller('api')
 @UseInterceptors(LoggingInterceptor, ClassSerializerInterceptor)
 @ApiUseTags('public-user-controller')
 export class PublicUserController {
     logger = new Logger('PublicUserController');
-
     constructor(private readonly authService: AuthService) {}
 
     @Get('/users')
@@ -49,4 +49,5 @@ export class PublicUserController {
         }
         return user.authorities;
     }
+ 
 }

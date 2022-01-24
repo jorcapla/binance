@@ -44,6 +44,8 @@
     "cacheProvider": "ehcache",
     "buildTool": "maven",
     "reactive": false,
-    "languages": ["en", "fr"]
+    "languages": ["en", "fr"],
+    "entities": ["CryptoCoin"],
+    "lastLiquibaseTimestamp": 1642970390000
   }
 }
