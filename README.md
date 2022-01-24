@@ -9,9 +9,9 @@ El repositorio contiene tres soluciones que consumen un servicio para obtener el
 ### Soluciones
 
 Las soluciones realizadas para testear el servicio de precios 
-- Java  utilizando Spring y jhipster 
+- Java  utilizando Spring y jhipster para generación de código
 - Python utilizando Flask
-- NodeJs utilizando jhipster para nodejs
+- NodeJs utilizando NestJs y jhipster para generación de código
 
 
 La url para testear el servicio de obtención de precios de cualquier solución es la siguiente: 
